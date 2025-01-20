@@ -2,10 +2,17 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 5000;
+const mongoose = require('mongoose');
+const authRoutes = require('./routes/authRoutes');
+const dotenv = require('dotenv');
+const connectDB = require('./config/db');
+
+dotenv.config();
+connectDB();
 
 app.use(cors());
 app.use(express.json());
-
+app.use('/api/auth', authRoutes);
 // Example data for posts
 const posts = [
   { id: 1, title: 'My first post', content: 'This is my first post!' },
@@ -19,9 +26,6 @@ app.get('/api/posts', (req, res) => {
 });
 
 
-app.get('/', (req, res) => {
-  res.send('Backend is up and running');
-});
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

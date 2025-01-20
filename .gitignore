@@ -12,3 +12,4 @@ logs/
 
 # Environment files
 .env
+mongodb+srv://PrajwalBM:zm7ZENYBOhJX5F8n@cluster0.9iksh.mongodb.net/
